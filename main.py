@@ -5,6 +5,7 @@ from pyshorteners import Shortener
 
 from ejobs import job_service as ejobs_job_service
 from indeed import job_service as indeed_job_service
+from hipo import job_service as hipo_job_service
 
 
 def shorten_application_link(application_link):
@@ -18,16 +19,24 @@ def get_jobs(job_name, job_location):
     start = time()
     indeed_offers = indeed_job_service.get_job_offers(job_name, job_location)
     end = time()
-    print(f"Extracted offers from ro.indeed.com in {end - start} seconds")
+    print(f"Extracted {len(indeed_offers)} offers from ro.indeed.com in {end - start} seconds")
+
     print("Extracting ejobs.ro offers...")
     start = time()
     ejobs_offers = ejobs_job_service.get_job_offers(job_name, job_location)
     end = time()
-    print(f"Extracted offers from ejobs.ro in {end - start} seconds")
-    return indeed_offers + ejobs_offers
+    print(f"Extracted {len(ejobs_offers)} offers from ejobs.ro in {end - start} seconds")
+
+    print("Extracting hipo.ro offers...")
+    start = time()
+    hipo_offers = hipo_job_service.get_job_offers(job_name, job_location)
+    end = time()
+    print(f"Extracted {len(hipo_offers)} offers from hipo.ro in {end - start} seconds")
+    
+    return indeed_offers + ejobs_offers + hipo_offers
 
 
-jobs = get_jobs(job_name="Manager", job_location="Cluj-Napoca")
+jobs = get_jobs(job_name="Java", job_location="Cluj-Napoca")
 # TODO get more jobs as in go on the next page of results
 print("Shortening links...")
 for job in jobs:
