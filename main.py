@@ -16,12 +16,12 @@ def shorten_application_link(application_link):
 def get_jobs(job_name, job_location):
     print("Extracting ro.indeed.com offers...")
     start = time()
-    indeed_offers = indeed_job_service.get_job_offers_indeed(job_name, job_location)
+    indeed_offers = indeed_job_service.get_job_offers(job_name, job_location)
     end = time()
     print(f"Extracted offers from ro.indeed.com in {end - start} seconds")
     print("Extracting ejobs.ro offers...")
     start = time()
-    ejobs_offers = ejobs_job_service.get_job_offers_ejobs(job_name, job_location)
+    ejobs_offers = ejobs_job_service.get_job_offers(job_name, job_location)
     end = time()
     print(f"Extracted offers from ejobs.ro in {end - start} seconds")
     return indeed_offers + ejobs_offers

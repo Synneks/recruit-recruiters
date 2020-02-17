@@ -4,10 +4,11 @@ from bs4 import BeautifulSoup
 from JobOffer import JobOffer
 
 
-def get_job_offers_indeed(job_title, job_location):
-    result_from_indeed = requests.get(f"https://ro.indeed.com/jobs?q={job_title}&l={job_location}")
-    src_code = result_from_indeed.content
-    soup = BeautifulSoup(src_code, "html.parser")
+def get_job_offers(job_title, job_location):
+    url = f"https://ro.indeed.com/jobs?q={job_title}&l={job_location}"
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, "html.parser")
+    
     job_card_tags = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
     job_offers = create_job_offers(job_card_tags)
     return job_offers
