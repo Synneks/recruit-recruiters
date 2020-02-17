@@ -27,9 +27,8 @@ def get_jobs(job_name, job_location):
     return indeed_offers + ejobs_offers
 
 
-# job_name = input("Enter job name: ")
-# job_location = input("Enter job location: ")
-jobs = get_jobs(job_name="Java", job_location="Cluj-Napoca")
+jobs = get_jobs(job_name="Manager", job_location="Cluj-Napoca")
+# TODO get more jobs as in go on the next page of results
 print("Shortening links...")
 for job in jobs:
     shortened_link = shorten_application_link(job.get_application_link())

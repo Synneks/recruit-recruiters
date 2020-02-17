@@ -35,7 +35,6 @@ def get_application_link(job_card_link):
     else:
         return job_card_link
 
-# TODO cazul in care nu sunt locuri de munca sa afisez/retrunez ceva calumea
 # arr = get_job_offers_indeed("QA", "Barlad")
 # for a in arr:
 #     print(a, "\n")
