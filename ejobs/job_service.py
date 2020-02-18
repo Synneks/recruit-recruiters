@@ -7,13 +7,17 @@ from JobOffer import JobOffer
 def get_job_offers(job_title, job_location):
     # TODO poti cauta doar dupa locatie si fara job title https://www.ejobs.ro/locuri-de-munca/brasov/
     # TODO poti cauta doar job_title fara locatie https://www.ejobs.ro/locuri-de-munca/cluj-napoca/?cauta=Java
-    url = f"https://www.ejobs.ro/locuri-de-munca/{job_location}/?cauta={job_title}"
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, "html.parser")
-    
-    job_list = soup.find(id="job-app-list")
-    job_card_tags = job_list.find_all("div", {"class": "jobitem-inner"})
-    job_offers = create_job_offers(job_card_tags)
+    job_offers = []
+    try:
+        url = f"https://www.ejobs.ro/locuri-de-munca/{job_location}/?cauta={job_title}"
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        
+        job_list = soup.find(id="job-app-list")
+        job_card_tags = job_list.find_all("div", {"class": "jobitem-inner"})
+        job_offers = create_job_offers(job_card_tags)
+    except Exception  as e:
+        print("[ERROR] - Failed to get job offers from hipo.ro \n", e.args)
     return job_offers
 
 

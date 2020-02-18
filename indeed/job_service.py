@@ -5,12 +5,15 @@ from JobOffer import JobOffer
 
 
 def get_job_offers(job_title, job_location):
-    url = f"https://ro.indeed.com/jobs?q={job_title}&l={job_location}"
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, "html.parser")
-    
-    job_card_tags = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
-    job_offers = create_job_offers(job_card_tags)
+    try:
+        url = f"https://ro.indeed.com/jobs?q={job_title}&l={job_location}"
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        
+        job_card_tags = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
+        job_offers = create_job_offers(job_card_tags)
+    except Exception  as e:
+        print("[ERROR] - Failed to get job offers from hipo.ro \n", e.args)
     return job_offers
 
 
