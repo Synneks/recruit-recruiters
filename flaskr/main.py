@@ -3,9 +3,9 @@ from time import time
 import pandas
 from pyshorteners import Shortener
 
-from ejobs import job_service as ejobs_job_service
-from indeed import job_service as indeed_job_service
-from hipo import job_service as hipo_job_service
+from service.ejobs import job_service as ejobs_job_service
+from service.indeed import job_service as indeed_job_service
+from service.hipo import job_service as hipo_job_service
 
 
 def shorten_application_link(shortener, application_link):
