@@ -11,7 +11,8 @@ psycopg2 = "*"
 bs4 = "*"
 pandas = "*"
 flask = "*"
-marshmallow = "*"
+flask-cors = "*"
+marshmallow = "<3.0.0b7"
 
 [requires]
 python_version = "3.8"
