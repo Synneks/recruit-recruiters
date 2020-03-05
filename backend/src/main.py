@@ -5,9 +5,10 @@ from flask_cors import CORS
 
 from .entities.entity import Session, engine, Base
 from .entities.exam import Exam, ExamSchema
-from ..services.ejobs import job_service as ejobs_job_service
-from ..services.indeed import job_service as indeed_job_service
-from ..services.hipo import job_service as hipo_job_service
+from .services.ejobs import job_service as ejobs_job_service
+from .services.indeed import job_service as indeed_job_service
+from .services.hipo import job_service as hipo_job_service
+from .services import link_shortener
 
 # creating the Flask application
 app = Flask(__name__)
@@ -69,18 +70,15 @@ def get_jobs(job_name, job_location):
     hipo_offers = hipo_job_service.get_job_offers(job_name, job_location)
     end = time()
     print(f"[INFO] - Extracted {len(hipo_offers)} offers from hipo.ro in {end - start} seconds")
+    
+    job_offers = indeed_offers + ejobs_offers + hipo_offers
 
-    return indeed_offers + ejobs_offers + hipo_offers
+    print("[INFO] - Shortening links...")
+    job_offers = link_shortener.shorten(job_offers)
 
 
-jobs = get_jobs(job_name="Java", job_location="Cluj-Napoca")
+
 # TODO get more jobs as in go on the next page of results
-print("[INFO] - Shortening links...")
-shortener = Shortener('Tinyurl', timeout= 9000)
-for job in jobs:
-    shortened_link = shorten_application_link(shortener, job.get_application_link())
-    job.set_application_link(shortened_link)
-
 # df = pandas.DataFrame(jobs)
 # df.to_csv("jobs.csv", index=False, header=False)
 # print("[INFO] - Job offers scraped")
