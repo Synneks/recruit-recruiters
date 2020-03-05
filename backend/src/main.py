@@ -3,12 +3,12 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 # from pandas import pandas
 
-from .entities.entity import Session, engine, Base
-from .entities.exam import Exam, ExamSchema
-from .services.ejobs import job_service as ejobs_job_service
-from .services.indeed import job_service as indeed_job_service
-from .services.hipo import job_service as hipo_job_service
-from .services import link_shortener
+from entities.entity import Session, engine, Base
+from entities.exam import Exam, ExamSchema
+from services.ejobs import job_service as ejobs_job_service
+from services.indeed import job_service as indeed_job_service
+from services.hipo import job_service as hipo_job_service
+from services import link_shortener
 
 # creating the Flask application
 app = Flask(__name__)
@@ -51,7 +51,7 @@ def add_exam():
     session.close()
     return jsonify(new_exam), 201
 
-@app.route("jobs?j=<job_name>&l=<job_location>")
+@app.route("/jobs?j=<job_name>&l=<job_location>")
 def get_jobs(job_name, job_location):
     print("[INFO] - Extracting ro.indeed.com offers...")
     start = time()
@@ -75,8 +75,9 @@ def get_jobs(job_name, job_location):
 
     print("[INFO] - Shortening links...")
     job_offers = link_shortener.shorten(job_offers)
-
-
+ 
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # TODO get more jobs as in go on the next page of results
 # df = pandas.DataFrame(jobs)

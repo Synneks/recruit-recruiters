@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from ...entities.job_offers import JobOffer
+from entities.job_offers import JobOffer
 
 
 def get_job_offers(job_title, job_location):
