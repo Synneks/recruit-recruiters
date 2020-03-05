@@ -1,5 +1,5 @@
-/.idea
-/.vscode
+.idea/
+.vscode/
 jobs.csv
 
 # Byte-compiled / optimized / DLL files
