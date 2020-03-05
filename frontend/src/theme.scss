@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary: mat-palette($mat-deep-purple);
+$accent: mat-palette($mat-amber, A400, A500, A600);
+$warn: mat-palette($mat-red);
+$background-color: map_get($mat-blue-grey, 50);
+//TODO dark background
+$theme: mat-dark-theme($primary, $accent, $warn);
+$background: map-get($theme, background);
+$background: map_merge($background, (background: $background-color));
+$theme: map_merge($theme, (background: $background));
+
+@include angular-material-theme($theme);

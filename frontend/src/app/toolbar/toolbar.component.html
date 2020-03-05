@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button aria-hidden="false" aria-label="Source code">
+      <mat-icon color="accent">code</mat-icon>
+    </button>
+    <span class="toolbar-title" >Recruit-Recruiters</span>
+    <button *ngIf="loggedUser == null;else loggedIn" mat-flat-button id="sign-in-button" class="toolbar-button-right" color="accent">
+      Sign In
+    </button>
+    <button #loggedIn mat-flat-button id="profile-button" class="toolbar-button-right" color="accent">
+        email<!-- {{user.email}} -->
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
