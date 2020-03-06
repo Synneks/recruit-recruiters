@@ -1,2 +1,7 @@
-<app-toolbar></app-toolbar>
-<app-dashboard></app-dashboard>
+<div [class.theme]="otherTheme">
+  <app-toolbar
+    [loggedUser]="loggedUser"
+    (themeChangerEvent)="changeTheme()"
+  ></app-toolbar>
+  <app-dashboard></app-dashboard>
+</div>

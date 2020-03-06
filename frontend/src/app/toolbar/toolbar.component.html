@@ -1,14 +1,40 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button aria-hidden="false" aria-label="Source code">
+    <button
+      mat-icon-button
+      aria-hidden="false"
+      aria-label="Source code"
+      (click)="goToLink('https://github.com/Synneks/recruit-recruiters')"
+    >
       <mat-icon color="accent">code</mat-icon>
     </button>
-    <span class="toolbar-title" >Recruit-Recruiters</span>
-    <button *ngIf="loggedUser == null;else loggedIn" mat-flat-button id="sign-in-button" class="toolbar-button-right" color="accent">
-      Sign In
+
+    <button mat-icon-button (click)="themeChanged()">
+      <mat-icon color="accent">all_out</mat-icon>
     </button>
-    <button #loggedIn mat-flat-button id="profile-button" class="toolbar-button-right" color="accent">
+
+    <span class="toolbar-title">Recruit-Recruiters</span>
+
+    <ng-template [ngIf]="loggedUser == null" [ngIfElse]="loggedIn">
+      <button
+        mat-flat-button
+        id="sign-in-button"
+        class="toolbar-button-right"
+        color="accent"
+      >
+        Sign In
+      </button>
+    </ng-template>
+
+    <ng-template #loggedIn>
+      <button
+        mat-flat-button
+        id="profile-button"
+        class="toolbar-button-right"
+        color="accent"
+      >
         email<!-- {{user.email}} -->
-    </button>
+      </button>
+    </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>
