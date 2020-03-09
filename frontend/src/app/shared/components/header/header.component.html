@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button aria-hidden="false" aria-label="Source code" (click)="goToLink('https://github.com/Synneks/recruit-recruiters')">
+      <mat-icon color="accent">code</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="themeChanged()">
+      <mat-icon color="accent">invert_colors</mat-icon>
+    </button>
+
+    <button mat-button color="accent">Recruit-Recruiters</button>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon color="accent">account_circle</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <ng-template [ngIf]="loggedUser == null" [ngIfElse]="loggedIn">
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                Sign In
+              </button>
+            </ng-template>
+
+            <ng-template #loggedIn>
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                Sign Out
+              </button>
+              <button mat-menu-item>
+                <mat-icon>build</mat-icon>
+                Account Settings
+              </button>
+            </ng-template>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

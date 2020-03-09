@@ -3,24 +3,18 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { ToolbarComponent } from "./toolbar/toolbar.component";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DefaultModule } from "./layouts/default/default.module";
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ToolbarComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
+    DefaultModule
   ],
   providers: [],
   bootstrap: [AppComponent]

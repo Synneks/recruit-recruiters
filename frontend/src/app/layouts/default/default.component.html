@@ -1,0 +1,5 @@
+<div [class.theme]="otherTheme" class="app-frame mat-app-background">
+  <app-header [loggedUser]="loggedUser" (themeChangerEvent)="changeTheme()"></app-header>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
