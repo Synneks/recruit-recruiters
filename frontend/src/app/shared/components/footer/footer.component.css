@@ -1,6 +1,8 @@
-mat-toolbar {
+footer {
   position: absolute;
-  box-sizing: border-box;
   bottom: 0;
-  width: 100%;
+}
+
+p {
+  color: #ffc107;
 }

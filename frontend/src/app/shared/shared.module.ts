@@ -3,23 +3,16 @@ import { CommonModule } from "@angular/common";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
-import { MatDividerModule } from "@angular/material/divider";
-import { MatMenuModule } from "@angular/material/menu";
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { MaterialDesignModule } from '../material-design.module';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, SearchBoxComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatMenuModule,
+    MaterialDesignModule
   ],
-  exports: [HeaderComponent, FooterComponent]
+  exports: [HeaderComponent, FooterComponent, SearchBoxComponent]
 })
 export class SharedModule {}

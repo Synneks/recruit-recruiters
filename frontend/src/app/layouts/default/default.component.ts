@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/assets/model/user';
+import { User } from 'src/assets/models/user';
 
 @Component({
   selector: 'app-default',

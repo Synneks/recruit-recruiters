@@ -1,0 +1,13 @@
+<div  class="search-box">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter job name</mat-label>
+    <input matInput placeholder="Ex: Manager" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Location</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let city of citites" value="option">{{city}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
